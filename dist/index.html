@@ -10,7 +10,7 @@
     <div id="search-player">
         <input type="text" id="search-food-byType-input" placeholder="seach by type of food..." />
         <button id="search-food-byType-button">Search by type</button>
-       
+        <button id="search-food-byType-button">Search by type</button>
     </div>
     <img src="" alt="">
     <hr>
@@ -20,9 +20,10 @@
 
         {{#each arrFoods}}
             <div class="singleFood" >
-                <span class="name">{{title}} {{lastName}}</span> <br>            
+                <span class="name">{{title}}</span> <br>            
                 <span class="name">{{href}} </span>  <br>  
-                <span class="name">{{ingredients}} </span>  <br>
+                <span class="name">{{ingredients}} </span> <br>
+                <span class="name">{{thumbnail}} </span>  <br>
                 <br>               
             </div>
         {{/each}}
@@ -30,6 +31,7 @@
 
     <script src="./jquery/dist/jquery.js"></script>
     <script src="./handlebars/dist/handlebars.js"></script>
+    <script src="Renderer.js"></script>
     <script src="main.js"></script>
 </body>
 

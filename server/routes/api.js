@@ -13,43 +13,49 @@ router.get('/foodbytype/:foodtype', function (req, res) {
     const url = `http://www.recipepuppy.com/api/?q=${argFoodType}`
     request.get(url, (error, response, body) => {
         const arg = JSON.parse(body)    
-        this.arrOfFood = arg.results        
+        this.arrOfFood = arg.results 
+
+        // braking into arrays
+        for ( let i = 0 ; i < this.arrOfFood.length ; i ++ ){
+            const curFood = this.arrOfFood[i]
+            const convertedArray = curFood.ingredients.split(',')
+            const modifiedArrayOfIngredients = []
+
+            // trimming each ingredient
+            for ( let j = 0 ; j < convertedArray.length ; j ++ ) {
+                let curIngredient = convertedArray[j]
+                curIngredient = MyTrim(curIngredient)
+                modifiedArrayOfIngredients.push(curIngredient)
+            }
+            curFood.ingredients = modifiedArrayOfIngredients
+        }
         res.send(this.arrOfFood)
     });
 })
 
+// ----------------------------------
+// Helping function
+// ----------------------------------
+function MyTrim(text) {
+    //turn into a string in case it's other type:
+    let result = text + "";
 
-// router.get('/teams/:teamName', function (req, res) {
+    //trim leading characters:
+    while (result.length > 0 && IsWhiteSpace(result[0]))
+        result = result.substr(1, result.length - 1);
 
-//     const teamToIDs = {
-//         "lakers": "1610612747",
-//         "warriors": "1610612744",
-//         "heat": "1610612748",
-//         "suns": "1610612756"
-//     }
+    //trim trailing characters:
+    while (result.length > 0 && IsWhiteSpace(result[result.length - 1]))
+        result = result.substr(0, result.length - 1);
 
-//     const teamName = req.params.teamName
-//     const teamArgId = teamToIDs[teamName]
-//     const arrFilteredPlayers = arrPlayers.filter(t => t.teamID == teamArgId)
-//     res.send(arrFilteredPlayers)
+    return result;
+}
 
-// })
-// router.get('/foods', function (req, res) {
-//     // console.log("getting teams first time 1")
-//     const url = "http://www.recipepuppy.com/api/";
-//     request.get(url, (error, response, body) => {
-//         const arg = JSON.parse(body)
-//         this.players = (arg.league.standard).map(e => ({
-//             firstName: e.firstName,
-//             lastName: e.lastName,
-//             pos: e.pos,
-//             jersey: e.jersey,
-//             isActive: e.isActive,
-//             teamID: e.teams[e.teams.length - 1].teamId,
-//             img: `https://nba-players.herokuapp.com/players/${e.lastName}/${e.firstName}`
-//         }))
-          
-//         res.send(arrFilteredPlayers)
-//     });
-// })
+// ----------------------------------
+// Helping function
+// ----------------------------------
+function IsWhiteSpace(c) {
+    return c == " " || c == "\r" || c == "\n" || c == "\t";
+}
+
 module.exports = router
