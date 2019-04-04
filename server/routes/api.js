@@ -8,6 +8,24 @@ router.get('/sanity', function (req, res) {
     res.send("OK!")
 })
 
+router.get('/filterByIngredients/:ingredients', function (req, res) {
+    const argIngredients = req.params.ingredients
+    const arrIngredientsToFilter = argIngredients.split(',')
+    const arrFoodFiltered = []
+    // -------------------------
+    // need a simplier way
+    for ( let i = 0 ; i < this.arrOfFood.length ; i ++ ){
+        const curFood = this.arrOfFood[i]
+        for ( let j = 0 ; j < arrIngredientsToFilter.length ; j ++ ){
+            const curIngredient = arrIngredientsToFilter[j]
+            if ( isExist(curFood.ingredients, curIngredient))
+                arrFoodFiltered.push(curFood)
+        }
+    }
+    res.send(arrFoodFiltered)
+})
+
+
 router.get('/foodbytype/:foodtype', function (req, res) {
     const argFoodType = req.params.foodtype
     const url = `http://www.recipepuppy.com/api/?q=${argFoodType}`
@@ -58,4 +76,13 @@ function IsWhiteSpace(c) {
     return c == " " || c == "\r" || c == "\n" || c == "\t";
 }
 
+// ----------------------------------
+// Helping function
+// ----------------------------------
+const isExist = function(argArray, argElement){
+    for ( let i = 0 ; i < argArray.length ; i ++ )
+        if (argElement == argArray[i].name)
+            return true
+    return false
+}
 module.exports = router

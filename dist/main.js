@@ -14,3 +14,10 @@ $("#search-food-byType-button").on("click", function (){
     })
 })
 
+
+$("#filter-food-byIngredients-button").on("click", function (){ 
+    let argIngredients = $("#filter-by-ingredients").val()
+    $.get(`/filterByIngredients/${argIngredients}`,function (response) {
+        renderer.render(response)
+    })
+})

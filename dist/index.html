@@ -10,9 +10,9 @@
     <div id="search-player">
         <input type="text" id="search-food-byType-input" placeholder="seach by type of food..." />
         <button id="search-food-byType-button">Search by type</button>
-        <button id="search-food-byType-button">Search by type</button>
+        <input type="text" id="filter-by-ingredients" placeholder="type ingredients." />
+        <button id="filter-food-byIngredients-button">Filter</button>
     </div>
-    <img src="" alt="">
     <hr>
     <div id="food"></div>
 
@@ -22,15 +22,13 @@
             <div class="singleFood" >
                 <a href="{{href}}">{{title}}</a>
                 <br>
-                <img src="{{thumbnail}}" alt=""><br>
+                <img src="{{thumbnail}}" alt="Image not found"><br>
                 <span>Ingredients: </span> <br>
                 <ul class="ingredients">
                     {{#each ingredients}}
-                    <div>
                         <li class="element">
                                 <span>{{name}} </span>
                         </li>
-                    </div>
                     {{/each}}
                 </ul>
                 
