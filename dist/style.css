@@ -1,0 +1,37 @@
+*{
+    font-family: 'PT Sans', sans-serif;
+}
+
+body{
+    background-color: #ffc048;
+}
+
+#players{
+    display: grid;
+    grid-gap: 1vmax;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.player{
+    align-content: center;
+    background-color: #FFB800;
+    display: grid;
+    grid-template-columns: 10fr 2fr;
+    padding: 1vmax;
+    border-radius: 4px;
+    box-shadow: 1px 1px 3px black;
+}
+.myImage{
+    background: grey
+}
+.name{
+    text-align: center
+}
+.visit:active{
+    color: #0fbcf9;
+}
+
+
+.not-visited{
+    background-color: #ef5777;
+}
