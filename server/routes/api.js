@@ -10,17 +10,12 @@ router.get('/sanity', function (req, res) {
 
 router.get('/foodbytype/:foodtype', function (req, res) {
     const argFoodType = req.params.foodtype
-    console.log(`getting by type: ${argFoodType}`)
-  
     const url = `http://www.recipepuppy.com/api/?q=${argFoodType}`
     request.get(url, (error, response, body) => {
         const arg = JSON.parse(body)    
-        this.arrOfFood = arg.results
-                
+        this.arrOfFood = arg.results        
         res.send(this.arrOfFood)
     });
-
-
 })
 
 

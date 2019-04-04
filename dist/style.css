@@ -6,13 +6,13 @@ body{
     background-color: #ffc048;
 }
 
-#players{
+#food{
     display: grid;
     grid-gap: 1vmax;
     grid-template-columns: repeat(3, 1fr);
 }
 
-.player{
+.singleFood{
     align-content: center;
     background-color: #FFB800;
     display: grid;

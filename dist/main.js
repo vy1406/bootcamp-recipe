@@ -1,10 +1,10 @@
-const source = $("#players-template").html()
+const source = $("#food-template").html()
 const template = Handlebars.compile(source)
 
-const render = function (players) {
-    $("#players").empty()
-    let newHtml = template({ players })
-    $("#players").append(newHtml)
+const render = function (arrFoods) {
+    $("#food").empty()
+    let newHtml = template({ arrFoods })
+    $("#food").append(newHtml)
 }
 
 const fetch = function () {
