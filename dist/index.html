@@ -20,10 +20,20 @@
 
         {{#each arrFoods}}
             <div class="singleFood" >
-                <span class="name">{{title}}</span> <br>            
-                <span class="name">{{href}} </span>  <br>  
-                <span class="name">{{ingredients}} </span> <br>
-                <span class="name">{{thumbnail}} </span>  <br>
+                <a href="{{href}}">{{title}}</a>
+                <br>
+                <img src="{{thumbnail}}" alt=""><br>
+                <span>Ingredients: </span> <br>
+                <ul class="ingredients">
+                    {{#each ingredients}}
+                    <div>
+                        <li class="element">
+                                <span>{{name}} </span>
+                        </li>
+                    </div>
+                    {{/each}}
+                </ul>
+                
                 <br>               
             </div>
         {{/each}}

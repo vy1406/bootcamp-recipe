@@ -25,7 +25,7 @@ router.get('/foodbytype/:foodtype', function (req, res) {
             for ( let j = 0 ; j < convertedArray.length ; j ++ ) {
                 let curIngredient = convertedArray[j]
                 curIngredient = MyTrim(curIngredient)
-                modifiedArrayOfIngredients.push(curIngredient)
+                modifiedArrayOfIngredients.push({name : curIngredient})
             }
             curFood.ingredients = modifiedArrayOfIngredients
         }

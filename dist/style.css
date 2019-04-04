@@ -11,9 +11,15 @@ body{
     grid-gap: 1vmax;
     grid-template-columns: repeat(3, 1fr);
 }
-
+.ingredients{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.element{
+    margin-left: 10px;
+    margin-right: 10px;
+}
 .singleFood{
-    align-content: center;
     background-color: #FFB800;
     display: grid;
     grid-template-columns: 10fr 2fr;
@@ -21,17 +27,17 @@ body{
     border-radius: 4px;
     box-shadow: 1px 1px 3px black;
 }
-.myImage{
-    background: grey
-}
+img {
+    border: 1px solid #ddd; /* Gray border */
+    border-radius: 4px;  /* Rounded border */
+    padding: 5px; /* Some padding */
+    width: 150px; /* Set a small width */
+  }
+  
+  /* Add a hover effect (blue shadow) */
+  img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+  }
 .name{
     text-align: center
-}
-.visit:active{
-    color: #0fbcf9;
-}
-
-
-.not-visited{
-    background-color: #ef5777;
 }
